@@ -4,15 +4,6 @@ session_start();
 include_once 'dbconnect.php';
 include_once 'header.php';
 
-// the message
-$msg = "First line of text\nSecond line of text";
-
-// use wordwrap() if lines are longer than 70 characters
-$msg = wordwrap($msg,70);
-
-// send email
-mail("gsapiacph@gmail.com","My subject",$msg);
-
 ?>
 <div class="container main-content">
 

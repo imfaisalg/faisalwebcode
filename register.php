@@ -47,7 +47,7 @@ if(isset($_SESSION['usr_id'])) {
 
 
     <div class="form-group" style="display: inline">
-        <input type="radio" name="userrole" value="student" checked="checked"> Student
+        <input type="radio" name="userrole" value="student" checked="checked"> Student<br>
         <input type="radio" name="userrole" value="eao">EAO<br>
         <input type="radio" name="userrole" value="admin" > Admin<br>
 
@@ -65,11 +65,7 @@ if(isset($_SESSION['usr_id'])) {
 <span class="text-danger"><?php if (isset($errormsg)) { echo $errormsg; } ?></span>
 </div>
 </div>
-<div class="row">
-    <div class="col-md-4 col-md-offset-4 text-center">
-        Already Registered? <a href="login.php">Login Here</a>
-    </div>
-</div>
+
 </div>
 
 <?php
@@ -332,7 +328,7 @@ else
         {
                                 ?>
                                 <div class="form-group" style="display: inline">
-                                    <input type="radio" name="userrole" value="student" checked="checked"> Student
+                                    <input type="radio" name="userrole" value="student" checked="checked"> Student<br>
                                     <input type="radio" name="userrole" value="eao">EAO<br>
                                     <input type="radio" name="userrole" value="admin" > Admin<br>
                                 </div>
@@ -353,11 +349,7 @@ else
                     <span class="text-danger"><?php if (isset($errormsg)) { echo $errormsg; } ?></span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 text-center">
-                    Already Registered? <a href="login.php">Login Here</a>
-                </div>
-            </div>
+
         </div>
 
         <?php

@@ -15,7 +15,7 @@ if(isset($_SESSION['usr_id'])) {
         <div class="row" style="margin-top:100px;">
         <div class="col-md-8 col-md-offset-2">
 
-            <a href="register.php" class="btn btn-success">New Experiment</a>
+            <a href="student_newexperiment.php" class="btn btn-success">New Experiment</a>
         </div>
 
         <div class="row">
@@ -24,12 +24,12 @@ if(isset($_SESSION['usr_id'])) {
             </div>
 
             <div class="col-md-8 col-md-offset-2">
-                <table style="margin-left:auto;margin-right: auto">
-                    <tr style="background-color: #2a6496;color: white">
-                        <th>User action</th>
-                        <th>Experiment Name</th>
-                        <th>Ethical Approval File</th>
-                        <th>Supplementry File</th>
+                <table style="margin-left:auto;margin-right: auto;border: solid 1px #2a6496">
+                    <tr class="row" style="background-color: #2a6496;color: white;height: 40px;">
+                        <th class="col-md-2">User action</th>
+                        <th class="col-md-3">Experiment Name</th>
+                        <th class="col-md-5">Description</th>
+                        <th class="col-md-2">View Detail</th>
                     </tr>
 
 
@@ -41,14 +41,15 @@ if(isset($_SESSION['usr_id'])) {
 
 
                         while ($row = $result->fetch_array()) {
-                            echo "<tr>";
-                            echo "<td> 
-                                    <a href=\"admin_editUser.php?usr_id=" . $row ['id'] . "\" class=\"btn btn-info\"> Edit</a>
-                                    <a href=\"admin_deleteUser.php?usr_id=" . $row ['id'] . "\" class=\"btn btn-danger\"> Delete</a>
+                            echo "<tr class=\"row\" style='height: 40px;border-bottom: solid 1px #2a6496'>";
+                            echo "<td class=\"col-md-2\" style='height: 40px;border-right: solid 1px #2a6496'> 
+                                   <a href=\"student_uploadfile.php?expid=" . $row ['id'] . "\" class=\"btn btn-info\"> Upload file</a>                                 
                                     </td>";
-                            echo "<td>" . $row['name'] . "</td>";
-                            echo "<td>" . $row['file1'] . "</td>";
-                            echo "<td>" . $row['file2'] . "</td>";
+                            echo "<td class=\"col-md-3\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['name'] . "</td>";
+                            echo "<td class=\"col-md-5\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['description'] . "</td>";
+                            echo "<td class=\"col-md-2\" style='height: 40px;border-right: solid 1px #2a6496'> 
+                                   <a href=\"student_viewexperiment.php?exp_id=" . $row ['id'] . "\" class=\"btn btn-info\"> View Detail</a>                                 
+                                    </td>";
                             echo "</tr>";
 
                         }

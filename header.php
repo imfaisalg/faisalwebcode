@@ -9,8 +9,8 @@
 
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
-    <link href="http://localhost:81/signin/css/navbar-fixed-top.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://localhost:81/signin/css/appStyle.css">
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/appStyle.css">
 
 </head>
 
@@ -69,10 +69,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (isset($_SESSION['usr_id'])) { ?>
                         <li><p class="navbar-text">Signed in as <?php echo $_SESSION['usr_name']; ?></p></li>
-                        <li><a href="logout2.php">Log Out</a></li>
+                        <li><a href="logout.php">Log Out</a></li>
                     <?php } else { ?>
-                        <li><a href="login2.php">Login</a></li>
-                        <li><a href="register2.php">Sign Up</a></li>
+                        <li><a href="login.php">Login</a></li>
+                        <li><a href="register.php">Sign Up</a></li>
                     <?php } ?>
                 </ul>
 

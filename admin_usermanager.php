@@ -29,7 +29,7 @@ include_once 'dbconnect.php';
 <div class="row" style="margin-top:100px;">
     <div class="col-md-8 col-md-offset-2">
 
-        <a href="register2.php" class="btn btn-success">Register User</a>
+        <a href="register.php" class="btn btn-success">Register User</a>
     </div>
 
     <div class="row" >

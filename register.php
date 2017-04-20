@@ -67,7 +67,7 @@ if(isset($_SESSION['usr_id'])) {
 </div>
 <div class="row">
     <div class="col-md-4 col-md-offset-4 text-center">
-        Already Registered? <a href="login2.php">Login Here</a>
+        Already Registered? <a href="login.php">Login Here</a>
     </div>
 </div>
 </div>
@@ -114,7 +114,7 @@ if (!$error) {
 
 
 
-        $successmsg = "Successfully Registered! <a href='login2.php'>Click here to Login</a>";
+        $successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
         $userRole="";
 
         header("Location: index.php");
@@ -156,7 +156,7 @@ else
     if (!$error) {
         if(mysqli_query($con, "INSERT INTO users(name,email,password,userrole) VALUES('" . $name . "', '" . $email . "', '" .  md5($password) . "', '" . $userRole . "')")) {
             $userRole="";
-            $successmsg = "Successfully Registered! <a href='login2.php'>Click here to Login</a>";
+            $successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
         } else {
             $userRole="";
             $errormsg = "Error in registering...Please try again later!";
@@ -241,7 +241,7 @@ else
                 }
                 if (!$error) {
                     if(mysqli_query($con, "INSERT INTO users(name,email,password,userrole) VALUES('" . $name . "', '" . $email . "', '" .  md5($password) . "', '" . $userRole . "')")) {
-                        $successmsg = "Successfully Registered! <a href='login2.php'>Click here to Login</a>";
+                        $successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
                         header("Location: index.php");
                     } else {
                         $errormsg = "Error in registering...Please try again later!";
@@ -280,7 +280,7 @@ else
                 if (!$error) {
                     if(mysqli_query($con, "INSERT INTO users(name,email,password,userrole) VALUES('" . $name . "', '" . $email . "', '" .  md5($password) . "', '" . $userRole . "')")) {
                         $userRole="";
-                        $successmsg = "Successfully Registered! <a href='login2.php'>Click here to Login</a>";
+                        $successmsg = "Successfully Registered! <a href='login.php'>Click here to Login</a>";
                     } else {
                         $userRole="";
                         $errormsg = "Error in registering...Please try again later!";
@@ -355,7 +355,7 @@ else
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 text-center">
-                    Already Registered? <a href="login2.php">Login Here</a>
+                    Already Registered? <a href="login.php">Login Here</a>
                 </div>
             </div>
         </div>

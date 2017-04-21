@@ -27,33 +27,12 @@ if(isset($_SESSION['usr_id'])) {
 
 
             $isvalideao1 = $_POST['isvalideao1'];
-          // $eao1comments = htmlentities($_POST['eaofirstcommnets']);
-          //  $eao2comments = htmlentities($_POST['eaofirstcommnets']);
+            $eao1comments = $_POST['eao1comments'];
+            $eao2comments = $_POST['eao2comments'];
 
 
             $expid = $_POST['expid'];
-            $val1 = $isvalideao1;
 
-
-
-            ?>
-
-            <?php
-
-            if($val1==1)
-            {
-                $val2 =$_POST['eaofirstcommnets'];
-                ?>
-                <script language="JavaScript">
-
-                    alert(<?php echo $val2  ?>);
-                    alert(<?php echo $val1  ?>);
-
-
-
-                </script>
-                <?php
-            }
             //UPDATE `experiments` SET `eao1comments`="sdfds",`eao2comments`"sdfds" WHERE 1
             $updatequery=mysqli_query($con,"Update experiments set eao1comments='.$eao1comments.',eao2comments='.$eao2comments.' where id='$expid'");
 
@@ -65,7 +44,7 @@ if(isset($_SESSION['usr_id'])) {
                 ?>
 
                 <script language="JavaScript">
-                    alert("Updated!");
+                    alert("Comments cannot be updated right now!");
                     header("Location: eao_manageexperimentss.php");
 
                 </script>
@@ -128,9 +107,9 @@ $currenteaostaff=0;
                     <div class="col-md-2">Comments:</div>
 
 
-                    <input type="text" name="eaofirstcommnets" value="test1">
-
-                    </input>
+                    <textarea name="eao1commnets" rows="4" cols="50" maxlength="250">
+                        enter your comments...
+                    </textarea>
 
                     <?php
                 } else {
@@ -141,8 +120,9 @@ $currenteaostaff=0;
                     <input type="hidden" name="isvalideao1" value="<?php echo $currenteaostaff ?>">
                     <div class="col-md-2">Comments:</div>
 
-                    <input type="text" name="eao2commnets" value="test2">
-                    </input>
+                    <textarea name="eao2comments" rows="4" cols="50" maxlength="250">
+                         enter your comments...
+                    </textarea>
 
                     <?php
 

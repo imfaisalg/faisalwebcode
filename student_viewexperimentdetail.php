@@ -40,7 +40,7 @@ if(isset($_SESSION['usr_id'])) {
                 echo "<div class=\"col-md-6\" style='height: 40px;'>Experiment Name: " . $row['name'] . "</div>";
                 echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>Description: " . $row['description'] . "</div>";
                 echo "<div class=\"col-md-6\" style='height: 40px;'>1st EAO  comments: " . $row['eao1comments'] . "</div>";
-                echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>2nd EAO : " . $row['eao2comments'] . "</div>";
+                echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>2nd EAO comments : " . $row['eao2comments'] . "</div>";
 
 
             }

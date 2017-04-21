@@ -39,8 +39,8 @@ if(isset($_SESSION['usr_id'])) {
                 echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>Experiment No.: " . $row['id'] . "</div>";
                 echo "<div class=\"col-md-6\" style='height: 40px;'>Experiment Name: " . $row['name'] . "</div>";
                 echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>Description: " . $row['description'] . "</div>";
-                echo "<div class=\"col-md-6\" style='height: 40px;'>EAO 1: " . $row['eao1'] . "</div>";
-                echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>EAO 2: " . $row['eao2'] . "</div>";
+                echo "<div class=\"col-md-6\" style='height: 40px;'>1st EAO  comments: " . $row['eao1comments'] . "</div>";
+                echo "<div class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>2nd EAO : " . $row['eao2comments'] . "</div>";
 
 
             }

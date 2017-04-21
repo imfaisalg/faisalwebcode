@@ -20,25 +20,19 @@ if(isset($_SESSION['usr_id'])) {
     //
     if ($_SESSION['usr_role'] == "student") {
         if (isset($_POST['newfile'])) {
-            $file = rand(1000, 100000) . "-" . $_FILES['file']['name'];
-            $file_loc = $_FILES['file']['tmp_name'];
-            $file_size = $_FILES['file']['size'];
-            $file_type = $_FILES['file']['type'];
-            $folder = "uploadedfiles/";
+            if(isset($_FILES['uploaded_file'])) {
 
-            // new file size in KB
-            $new_size = $file_size / 1024;
-            // new file size in KB
+                // Make sure the file was sent without errors
+                if($_FILES['uploaded_file']['error'] == 0) {
 
-            // make file name in lower case
-            $new_file_name = strtolower($file);
-            // make file name in lower case
+                    // Gather all required data
+                    $name = $con-> real_escape_string($_FILES['uploaded_file']['name']);
+                    $mime = $con->real_escape_string($_FILES['uploaded_file']['type']);
+                    $data = $con->real_escape_string(file_get_contents($_FILES  ['uploaded_file']['tmp_name']));
+                    $size = intval($_FILES['uploaded_file']['size']);
+                }
 
-            $final_file = str_replace(' ', '-', $new_file_name);
-
-            if (move_uploaded_file($file_loc, $folder . $final_file)) {
-
-            $expid = $_POST['expid'];
+                    $expid = $_POST['expid'];
 
 
                 //getting experiment details
@@ -71,64 +65,80 @@ if(isset($_SESSION['usr_id'])) {
 
 
                 if (!$error) {
-                    if (mysqli_query($con, "INSERT INTO uploadedfiles(expid,file,type,size) VALUES('" . $expid . "', '" . $final_file . "', '" . $file_type . "', '" . $new_size . "')")) {
+                    ///
+                    ///
+                    ///
+                    // Create the SQL query
+                    $query = "INSERT INTO `file` (`expid`,`name`, `mime`, `size`, `data`, `created`)VALUES ('{$expid}','{$name}', '{$mime}', {$size}, '{$data}', NOW())";
 
+                    // Execute the query
+                    $result = $con->query($query);
+
+                    // Check if it was successfull
+                    if($result) {
                         ?>
+
+                        <script language="JavaScript">
+                            alert("Success! Your file was successfully added!");
+                        </script>
                         <div class="row" style="margin-top: 50px">
-                        <div class="col-md-12">
-                        <table style="margin-left:auto;margin-right: auto;border: solid 1px #2a6496">
-                        <tr class="row" style="background-color: #2a6496;color: white;height: 40px;">
-<!--                            <th class="col-md-2">Experiment No.</th>-->
-                            <th class="col-md-6">File Name</th>
-<!--                            <th class="col-md-2">File Type</th>-->
-<!--                            <th class="col-md-2">File Size(KB)</th>-->
-                            <th class="col-md-6">View</th>
-                        </tr>
+                            <div class="col-md-12">
+                                <table style="margin-left:auto;margin-right: auto;border: solid 1px #2a6496">
+                                    <tr class="row" style="background-color: #2a6496;color: white;height: 40px;">
+                                           <th class="col-md-6">File Name</th>
+                                           <th class="col-md-6">View</th>
+                                    </tr>
+                                    <?php
+                                    //getting uploaded files list
+                                    $result = mysqli_query($con, "SELECT * FROM file where expid=" . $expid);
+                                    $num_rows = mysqli_num_rows($result);
 
-                        <?php
-
-
-
-
-                        //getting uploaded files list
-                        $result = mysqli_query($con, "SELECT * FROM uploadedfiles where expid=" .$expid);
-                        $num_rows = mysqli_num_rows($result);
-
-                        if ($num_rows > 0) {
+                                    if ($num_rows > 0) {
 
 
-                            while ($row = $result->fetch_array()) {
-                                echo "<tr class=\"row\" style='height: 40px;border-bottom: solid 1px #2a6496'>";
-//                                echo "<td class=\"col-md-2\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['expid'] . "</td>";
-                                echo "<td class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['file'] . "</td>";
-//                                echo "<td class=\"col-md-2\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['type'] . "</td>";
-//                                echo "<td class=\"col-md-2\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['size'] . "</td>";
-                                echo "<td class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'> 
-                                <a href=\"uploadedfiles/" . $row['file'] . "\" target=\"_blank\">view file</a></td>";
+                                    while ($row = $result->fetch_array()) {
+                                        echo "<tr class=\"row\" style='height: 40px;border-bottom: solid 1px #2a6496'>";
+                                                echo "<td class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['name'] . "</td>";
+                                                echo "<td class=\"col-md-6\" style='height: 40px;border-right: solid 1px #2a6496'>
+                                               <a href=\"getfile.php?id=" . $row ['id'] . "\" class=\"btn btn-info\"> View</a>";
 
-                                echo "</tr>";
+                                        echo "</tr>";
 
-                            }
+                                    }
 
-                            $result->close();
-                            // cl ose connecti on t o dat abase
-                            $con->close();
+                                    $result->close();
+                                    // cl ose connecti on t o dat abase
+                                    $con->close();
 
 
-                            ?>
-                            </table>
+                                    ?>
+                                </table>
 
                             </div>
-                           </div>
-                            <?php
-                            header("Location: student_manageexperiments.php");
+                        </div>
+                        <?php
+                        header("Location: student_manageexperiments.php");
 
-                        } else {
+                    }
+                    else
+                    {
+                        echo '<p>There are no files in the database</p>';
 
-                            $errormsg = "Error in creating...Please try again later!";
-                        }
+                    }
+                    }
+                    else {
+                        ?>
+
+                        <script language="JavaScript">
+                            alert("Error!");
+                        </script>
+
+                        <?php
                     }
 
+                    ///
+                    ///
+                    ///
 
                 }
             }
@@ -147,7 +157,11 @@ if(isset($_SESSION['usr_id'])) {
                                 <div class="form-group">
                                     <input type="hidden" name="expid" value="<?php if (isset($expid)) { echo $expid; } ?>">
                                     <label for="name">File</label>
-                                    <input type="file" name="file" />
+<!--                                    <input type="file" name="file" />-->
+
+                                    <input type="file" name="uploaded_file"><br>
+
+
                                 </div>
 
 

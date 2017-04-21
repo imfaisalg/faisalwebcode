@@ -38,7 +38,11 @@ if(isset($_SESSION['usr_id'])) {
 
                     } else {
 
-                        $errormsg = "Error in creating...Please try again later!";
+                       ?>
+                        <script language="JavaScript">
+                            alert("error");
+                        </script>
+                        <?php
                     }
                 }
 

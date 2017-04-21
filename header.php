@@ -41,21 +41,29 @@
                     if ($_SESSION['usr_role'] == "admin") {
                         ?>
                         <li><a href="admin_usermanager.php">User Management</a></li>
-                        <li><a href="#contact">Project Management</a></li>
+                        <li><a href="admin_experimentmanager.php">Experiment Management</a></li>
 
                     <?php }
                     else if($_SESSION['usr_role'] == "student")
                     {
                         ?>
-                        <li><a href="student_manageexperiments.php">Mange Experiments</a></li>
+                        <li><a href="student_manageexperiments.php">Manage Experiments</a></li>
+
+                        <?php
+
+                    }
+                    else if($_SESSION['usr_role'] == "eao")
+                    {
+                        ?>
+                        <li><a href="eao_manageexperiments.php">Manage Experiments</a></li>
 
                         <?php
 
                     }
                 }
                 else { ?>
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 <?php
                 }
                 ?>

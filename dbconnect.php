@@ -1,5 +1,5 @@
-<?/*
-$connectstr_dbhost = '';
+<?php
+/*$connectstr_dbhost = '';
 $connectstr_dbname = '';
 $connectstr_dbusername = '';
 $connectstr_dbpassword = '';
@@ -22,7 +22,10 @@ if (!$con) {
 }
 */?>
 
+
+
 <?php
 //connect to mysql database
 $con = mysqli_connect("localhost", "root", "mysqlroot", "dbfaisal") or die("Error " . mysqli_error($con));
 ?>
+

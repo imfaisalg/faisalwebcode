@@ -19,6 +19,8 @@ if (isset($_GET["expid"])) {
 if(isset($_SESSION['usr_id'])) {
     //
     if ($_SESSION['usr_role'] == "student") {
+        $studentid = $_SESSION['usr_id'];
+
         if (isset($_POST['newfile'])) {
             if(isset($_FILES['uploaded_file'])) {
 
@@ -36,9 +38,9 @@ if(isset($_SESSION['usr_id'])) {
 
 
                 //getting experiment details
-                $result = mysqli_query($con, "SELECT * FROM experiments where id=" .$expid);
+                $result = mysqli_query($con, "SELECT * FROM experiments where id=" .$expid. " and studentid=" .$studentid);
                 $num_rows = mysqli_num_rows($result);
-                echo "<div class=\"row\" style='margin-top: 50px'>";
+                echo "<div class=\"row\" style='margin-top: 100px'>";
                 echo "<h1 class=\"col-md-8 col-md-offset-2\" style='text-align: center'> Uploaded file list </h1>";
                 echo "</div>";
                 echo "<div class=\"row\" style='margin-top: 50px'>";
@@ -117,7 +119,7 @@ if(isset($_SESSION['usr_id'])) {
                             </div>
                         </div>
                         <?php
-                        header("Location: student_manageexperiments.php");
+                       // header("Location: student_manageexperiments.php");
 
                     }
                     else

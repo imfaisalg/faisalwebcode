@@ -14,7 +14,7 @@ if(isset($_SESSION['usr_id'])) {
         if (isset($_POST['newexp'])) {
             $name = mysqli_real_escape_string($con, $_POST['expname']);
             $description = mysqli_real_escape_string($con, $_POST['expdescription']);
-
+$studentid = $_SESSION['usr_id'];
 
 //checking if its the first user in the system then create a 1st user with admin role
 
@@ -29,7 +29,7 @@ if(isset($_SESSION['usr_id'])) {
                 }
 
                 if (!$error) {
-                    if(mysqli_query($con, "INSERT INTO experiments(name,description) VALUES('" . $name . "', '" . $description . "')")) {
+                    if(mysqli_query($con, "INSERT INTO experiments(name,description,studentid) VALUES('" . $name . "', '" . $description ."', '" . $studentid . "')")) {
 
 
                         header("Location: student_manageexperiments.php");

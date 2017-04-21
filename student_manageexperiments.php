@@ -11,6 +11,8 @@ $userRole = "";
 if(isset($_SESSION['usr_id'])) {
     //
     if ($_SESSION['usr_role'] == "student") {
+        $studentid = $_SESSION['usr_id'];
+
         ?>
         <div class="row" style="margin-top:100px;">
         <div class="col-md-8 col-md-offset-2">
@@ -34,7 +36,9 @@ if(isset($_SESSION['usr_id'])) {
 
 
                     <?php
-                    $result = mysqli_query($con, "SELECT * FROM experiments");
+
+
+                    $result = mysqli_query($con, "SELECT * FROM experiments where studentid=" . $studentid);
                     $num_rows = mysqli_num_rows($result);
 
                     if ($num_rows > 0) {
@@ -48,7 +52,7 @@ if(isset($_SESSION['usr_id'])) {
                             echo "<td class=\"col-md-3\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['name'] . "</td>";
                             echo "<td class=\"col-md-5\" style='height: 40px;border-right: solid 1px #2a6496'>" . $row['description'] . "</td>";
                             echo "<td class=\"col-md-2\" style='height: 40px;border-right: solid 1px #2a6496'> 
-                                   <a href=\"student_viewexperiment.php?exp_id=" . $row ['id'] . "\" class=\"btn btn-info\"> View Detail</a>                                 
+                                   <a href=\"student_viewexperimentdetail.php?expid=" . $row ['id'] . "\" class=\"btn btn-info\"> View Detail</a>                                 
                                     </td>";
                             echo "</tr>";
 

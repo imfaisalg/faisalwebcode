@@ -133,6 +133,12 @@ else
         $error = true;
         $userRole="";
         $name_error = "Name must contain only alphabets and space";
+
+        ?>
+        <script language="javascript">
+            alert(<?php $name_error ?>);
+        </script>
+        <?php
     }
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
         $error = true;

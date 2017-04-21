@@ -19,7 +19,7 @@ include_once 'header.php';
         ?>
 
         <div class="jumbotron">
-            <h1 style="text-align: center">Home screen</h1>
+            <h1 style="text-align: center">Project Ethical Approval Monitoring</h1>
 
         </div>
 <?php

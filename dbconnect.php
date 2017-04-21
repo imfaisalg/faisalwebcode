@@ -1,5 +1,5 @@
 <?php
-/*$connectstr_dbhost = '';
+$connectstr_dbhost = '';
 $connectstr_dbname = '';
 $connectstr_dbusername = '';
 $connectstr_dbpassword = '';
@@ -20,12 +20,5 @@ if (!$con) {
     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
-*/?>
-
-
-
-<?php
-//connect to mysql database
-$con = mysqli_connect("localhost", "root", "mysqlroot", "dbfaisal") or die("Error " . mysqli_error($con));
 ?>
 

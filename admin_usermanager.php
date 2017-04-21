@@ -28,7 +28,7 @@ include_once 'dbconnect.php';
 <?php
 if(isset($_SESSION['usr_id'])) {
 //
-    if ($_SESSION['usr_role'] == "student") {
+    if ($_SESSION['usr_role'] == "admin") {
 
         ?>
         <div class="row" style="margin-top:100px;">

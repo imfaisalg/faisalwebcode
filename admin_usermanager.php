@@ -28,7 +28,7 @@ include_once 'dbconnect.php';
 <?php
 if(isset($_SESSION['usr_id'])) {
 //
-    if ($_SESSION['usr_role'] == "admin") {
+    if ($_SESSION['usr_role'] == "student") {
 
         ?>
         <div class="row" style="margin-top:100px;">
@@ -45,7 +45,7 @@ if(isset($_SESSION['usr_id'])) {
                 <div class="col-md-8 col-md-offset-2">
                     <table style="margin-left:auto;margin-right: auto">
                         <tr style="background-color: #2a6496;color: white">
-                            <th>User action</th>
+
                             <th>Name</th>
                             <th>EMail</th>
                             <th>Role</th>
@@ -61,10 +61,7 @@ if(isset($_SESSION['usr_id'])) {
 
                             while ($row = $result->fetch_array()) {
                                 echo "<tr>";
-                                echo "<td> 
-                                    <a href=\"admin_editUser.php?usr_id=" . $row ['id'] . "\" class=\"btn btn-info\"> Edit</a>
-                                    <a href=\"admin_deleteUser.php?usr_id=" . $row ['id'] . "\" class=\"btn btn-danger\"> Delete</a>
-                                    </td>";
+                               
                                 echo "<td>" . $row['name'] . "</td>";
                                 echo "<td>" . $row['email'] . "</td>";
                                 echo "<td>" . $row['userrole'] . "</td>";
